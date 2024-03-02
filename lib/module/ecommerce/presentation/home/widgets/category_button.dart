@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/constants/global_variable.dart';
+
 class CategoryButton extends StatelessWidget {
   final String imagePath;
   final String label;
@@ -21,8 +23,10 @@ class CategoryButton extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Image.asset(
-              imagePath,
+            Image.network(
+              imagePath.contains('http')
+                  ? imagePath
+                  : '${GlobalVariable.baseUrlImageCategories}$imagePath',
               width: 80.0,
               height: 80.0,
               fit: BoxFit.contain,

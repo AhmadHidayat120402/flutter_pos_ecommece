@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/alat_pertanian/alat_pertanian_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/all_product/all_product_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/benih/benih_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/checkout/checkout_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/pestisida/pestisida_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/pupuk/pupuk_bloc.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:badges/badges.dart' as badges;
 import '../../../../../core/assets/assets.gen.dart';
 import '../../../../../core/components/search_input.dart';
 import '../../../../../core/components/spaces.dart';
@@ -213,6 +220,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    context.read<AllProductBloc>().add(const AllProductEvent.getAllProducts());
+    context.read<BenihBloc>().add(const BenihEvent.getProductBenih());
+    context.read<PupukBloc>().add(const PupukEvent.getProductPupuk());
+    context
+        .read<PestisidaBloc>()
+        .add(const PestisidaEvent.getProductPestisida());
+    context
+        .read<AlatPertanianBloc>()
+        .add(const AlatPertanianEvent.getProductAlatPertanian());
     searchController = TextEditingController();
     super.initState();
   }
@@ -227,20 +243,55 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cwb Store'),
+        title: const Text('Tani Store'),
         actions: [
+          BlocBuilder<CheckoutBloc, CheckoutState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => const SizedBox.shrink(),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (message) => Center(
+                  child: Text(message),
+                ),
+                loaded: (products) {
+                  final totalQuantity = products.fold(
+                      0,
+                      (previousValue, element) =>
+                          previousValue + element.quantity);
+                  return totalQuantity > 0
+                      ? badges.Badge(
+                          badgeContent: Text(
+                            totalQuantity.toString(),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          child: IconButton(
+                            onPressed: () {
+                              context.goNamed(
+                                RouteConstants.cart,
+                                pathParameters: PathParameters().toMap(),
+                              );
+                            },
+                            icon: Assets.icons.cart.svg(height: 24.0),
+                          ),
+                        )
+                      : IconButton(
+                          onPressed: () {
+                            context.goNamed(
+                              RouteConstants.cart,
+                              pathParameters: PathParameters().toMap(),
+                            );
+                          },
+                          icon: Assets.icons.cart.svg(height: 24.0),
+                        );
+                },
+              );
+            },
+          ),
           IconButton(
             onPressed: () {},
             icon: Assets.icons.notification.svg(height: 24.0),
-          ),
-          IconButton(
-            onPressed: () {
-              context.goNamed(
-                RouteConstants.cart,
-                pathParameters: PathParameters().toMap(),
-              );
-            },
-            icon: Assets.icons.cart.svg(height: 24.0),
           ),
         ],
       ),
@@ -268,36 +319,114 @@ class _HomePageState extends State<HomePage> {
           const SpaceHeight(12.0),
           const MenuCategories(),
           const SpaceHeight(50.0),
-          ProductList(
-            title: 'Featured Product',
-            onSeeAllTap: () {},
-            items: featuredProducts,
+          BlocBuilder<AllProductBloc, AllProductState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => const SizedBox.shrink(),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (message) => Center(
+                  child: Text(message),
+                ),
+                loaded: (products) {
+                  return ProductList(
+                    title: "All Product",
+                    onSeeAllTap: () {},
+                    items:
+                        products.length > 2 ? products.sublist(0, 2) : products,
+                  );
+                },
+              );
+            },
           ),
           const SpaceHeight(50.0),
           BannerSlider(items: banners2),
           const SpaceHeight(28.0),
-          ProductList(
-            title: 'Best Sellers',
-            onSeeAllTap: () {},
-            items: bestSellers,
+          BlocBuilder<BenihBloc, BenihState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => const SizedBox.shrink(),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (message) => Center(
+                  child: Text(message),
+                ),
+                loaded: (products) {
+                  return ProductList(
+                    title: 'Benih',
+                    onSeeAllTap: () {},
+                    items:
+                        products.length > 2 ? products.sublist(0, 2) : products,
+                  );
+                },
+              );
+            },
           ),
           const SpaceHeight(50.0),
-          ProductList(
-            title: 'New Arrivals',
-            onSeeAllTap: () {},
-            items: newArrivals,
+          BlocBuilder<PupukBloc, PupukState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => const SizedBox.shrink(),
+                error: (message) => Center(
+                  child: Text(message),
+                ),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                loaded: (products) {
+                  return ProductList(
+                    title: 'Pupuk',
+                    onSeeAllTap: () {},
+                    items:
+                        products.length > 2 ? products.sublist(0, 2) : products,
+                  );
+                },
+              );
+            },
           ),
           const SpaceHeight(50.0),
-          ProductList(
-            title: 'Top Rated Product',
-            onSeeAllTap: () {},
-            items: topRatedProducts,
+          BlocBuilder<PestisidaBloc, PestisidaState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => const SizedBox.shrink(),
+                error: (message) => Center(
+                  child: Text(message),
+                ),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                loaded: (products) {
+                  return ProductList(
+                    title: 'Pestisida',
+                    onSeeAllTap: () {},
+                    items: products,
+                  );
+                },
+              );
+            },
           ),
           const SpaceHeight(50.0),
-          ProductList(
-            title: 'Special Offers',
-            onSeeAllTap: () {},
-            items: specialOffers,
+          BlocBuilder<AlatPertanianBloc, AlatPertanianState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => const SizedBox.shrink(),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (message) => Center(
+                  child: Text(message),
+                ),
+                loaded: (products) {
+                  return ProductList(
+                    title: 'Alat Pertanian',
+                    onSeeAllTap: () {},
+                    items: products,
+                  );
+                },
+              );
+            },
           ),
         ],
       ),
