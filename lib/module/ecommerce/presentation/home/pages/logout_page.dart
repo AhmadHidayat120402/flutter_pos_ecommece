@@ -25,12 +25,15 @@ class _LogoutPageState extends State<LogoutPage> {
                     pathParameters: PathParameters().toMap());
               },
               error: (message) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    backgroundColor: Colors.red,
-                    content: Text(message),
-                  ),
+                context.goNamed(
+                  RouteConstants.login,
                 );
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   SnackBar(
+                //     backgroundColor: Colors.red,
+                //     content: Text(message),
+                //   ),
+                // );
               },
             );
           },
