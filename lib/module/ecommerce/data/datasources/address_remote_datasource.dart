@@ -23,19 +23,24 @@ class AddressRemoteDatasource {
   }
 
   Future<Either<String, String>> addAddress(AddressRequestModel data) async {
-    final authData = await AuthLocalDatasource().getAuthData();
-    final response = await http.post(
-      Uri.parse('${GlobalVariable.baseUrl}/api/addresses'),
-      headers: {
-        'Authorization': 'Bearer ${authData?.accessToken}',
-        'Accept': 'application/json',
-      },
-      body: data.toJson(),
-    );
-    if (response.statusCode == 201) {
-      return const Right("Success");
-    } else {
-      return const Left("Error");
+    try {
+      final authData = await AuthLocalDatasource().getAuthData();
+      final response = await http.post(
+        Uri.parse('${GlobalVariable.baseUrl}/api/addresses'),
+        headers: {
+          'Authorization': 'Bearer ${authData!.accessToken}',
+          'Accept': 'application/json',
+          'Content-type': 'application/json',
+        },
+        body: data.toJson(),
+      );
+      if (response.statusCode == 201) {
+        return const Right('Success');
+      } else {
+        return const Left('Error');
+      }
+    } catch (e) {
+      return const Left('Error');
     }
   }
 }

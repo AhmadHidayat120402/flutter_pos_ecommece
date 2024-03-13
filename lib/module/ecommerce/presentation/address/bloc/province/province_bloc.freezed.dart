@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'address_bloc.dart';
+part of 'province_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AddressEvent {
+mixin _$ProvinceEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getAddress,
+    required TResult Function() getProvince,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getAddress,
+    TResult? Function()? getProvince,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getAddress,
+    TResult Function()? getProvince,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetAddress value) getAddress,
+    required TResult Function(_GetProvince value) getProvince,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetAddress value)? getAddress,
+    TResult? Function(_GetProvince value)? getProvince,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetAddress value)? getAddress,
+    TResult Function(_GetProvince value)? getProvince,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AddressEventCopyWith<$Res> {
-  factory $AddressEventCopyWith(
-          AddressEvent value, $Res Function(AddressEvent) then) =
-      _$AddressEventCopyWithImpl<$Res, AddressEvent>;
+abstract class $ProvinceEventCopyWith<$Res> {
+  factory $ProvinceEventCopyWith(
+          ProvinceEvent value, $Res Function(ProvinceEvent) then) =
+      _$ProvinceEventCopyWithImpl<$Res, ProvinceEvent>;
 }
 
 /// @nodoc
-class _$AddressEventCopyWithImpl<$Res, $Val extends AddressEvent>
-    implements $AddressEventCopyWith<$Res> {
-  _$AddressEventCopyWithImpl(this._value, this._then);
+class _$ProvinceEventCopyWithImpl<$Res, $Val extends ProvinceEvent>
+    implements $ProvinceEventCopyWith<$Res> {
+  _$ProvinceEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +83,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AddressEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$ProvinceEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -97,7 +97,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'AddressEvent.started()';
+    return 'ProvinceEvent.started()';
   }
 
   @override
@@ -113,7 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getAddress,
+    required TResult Function() getProvince,
   }) {
     return started();
   }
@@ -122,7 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getAddress,
+    TResult? Function()? getProvince,
   }) {
     return started?.call();
   }
@@ -131,7 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getAddress,
+    TResult Function()? getProvince,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,7 +144,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetAddress value) getAddress,
+    required TResult Function(_GetProvince value) getProvince,
   }) {
     return started(this);
   }
@@ -153,7 +153,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetAddress value)? getAddress,
+    TResult? Function(_GetProvince value)? getProvince,
   }) {
     return started?.call(this);
   }
@@ -162,7 +162,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetAddress value)? getAddress,
+    TResult Function(_GetProvince value)? getProvince,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,40 +172,40 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements AddressEvent {
+abstract class _Started implements ProvinceEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$GetAddressImplCopyWith<$Res> {
-  factory _$$GetAddressImplCopyWith(
-          _$GetAddressImpl value, $Res Function(_$GetAddressImpl) then) =
-      __$$GetAddressImplCopyWithImpl<$Res>;
+abstract class _$$GetProvinceImplCopyWith<$Res> {
+  factory _$$GetProvinceImplCopyWith(
+          _$GetProvinceImpl value, $Res Function(_$GetProvinceImpl) then) =
+      __$$GetProvinceImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetAddressImplCopyWithImpl<$Res>
-    extends _$AddressEventCopyWithImpl<$Res, _$GetAddressImpl>
-    implements _$$GetAddressImplCopyWith<$Res> {
-  __$$GetAddressImplCopyWithImpl(
-      _$GetAddressImpl _value, $Res Function(_$GetAddressImpl) _then)
+class __$$GetProvinceImplCopyWithImpl<$Res>
+    extends _$ProvinceEventCopyWithImpl<$Res, _$GetProvinceImpl>
+    implements _$$GetProvinceImplCopyWith<$Res> {
+  __$$GetProvinceImplCopyWithImpl(
+      _$GetProvinceImpl _value, $Res Function(_$GetProvinceImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GetAddressImpl implements _GetAddress {
-  const _$GetAddressImpl();
+class _$GetProvinceImpl implements _GetProvince {
+  const _$GetProvinceImpl();
 
   @override
   String toString() {
-    return 'AddressEvent.getAddress()';
+    return 'ProvinceEvent.getProvince()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetAddressImpl);
+        (other.runtimeType == runtimeType && other is _$GetProvinceImpl);
   }
 
   @override
@@ -215,29 +215,29 @@ class _$GetAddressImpl implements _GetAddress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getAddress,
+    required TResult Function() getProvince,
   }) {
-    return getAddress();
+    return getProvince();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getAddress,
+    TResult? Function()? getProvince,
   }) {
-    return getAddress?.call();
+    return getProvince?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getAddress,
+    TResult Function()? getProvince,
     required TResult orElse(),
   }) {
-    if (getAddress != null) {
-      return getAddress();
+    if (getProvince != null) {
+      return getProvince();
     }
     return orElse();
   }
@@ -246,45 +246,45 @@ class _$GetAddressImpl implements _GetAddress {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetAddress value) getAddress,
+    required TResult Function(_GetProvince value) getProvince,
   }) {
-    return getAddress(this);
+    return getProvince(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetAddress value)? getAddress,
+    TResult? Function(_GetProvince value)? getProvince,
   }) {
-    return getAddress?.call(this);
+    return getProvince?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetAddress value)? getAddress,
+    TResult Function(_GetProvince value)? getProvince,
     required TResult orElse(),
   }) {
-    if (getAddress != null) {
-      return getAddress(this);
+    if (getProvince != null) {
+      return getProvince(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetAddress implements AddressEvent {
-  const factory _GetAddress() = _$GetAddressImpl;
+abstract class _GetProvince implements ProvinceEvent {
+  const factory _GetProvince() = _$GetProvinceImpl;
 }
 
 /// @nodoc
-mixin _$AddressState {
+mixin _$ProvinceState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Address> address) loaded,
+    required TResult Function(List<Provinces> provinces) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -292,7 +292,7 @@ mixin _$AddressState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Address> address)? loaded,
+    TResult? Function(List<Provinces> provinces)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -300,7 +300,7 @@ mixin _$AddressState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Address> address)? loaded,
+    TResult Function(List<Provinces> provinces)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -333,16 +333,16 @@ mixin _$AddressState {
 }
 
 /// @nodoc
-abstract class $AddressStateCopyWith<$Res> {
-  factory $AddressStateCopyWith(
-          AddressState value, $Res Function(AddressState) then) =
-      _$AddressStateCopyWithImpl<$Res, AddressState>;
+abstract class $ProvinceStateCopyWith<$Res> {
+  factory $ProvinceStateCopyWith(
+          ProvinceState value, $Res Function(ProvinceState) then) =
+      _$ProvinceStateCopyWithImpl<$Res, ProvinceState>;
 }
 
 /// @nodoc
-class _$AddressStateCopyWithImpl<$Res, $Val extends AddressState>
-    implements $AddressStateCopyWith<$Res> {
-  _$AddressStateCopyWithImpl(this._value, this._then);
+class _$ProvinceStateCopyWithImpl<$Res, $Val extends ProvinceState>
+    implements $ProvinceStateCopyWith<$Res> {
+  _$ProvinceStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -359,7 +359,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$AddressStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$ProvinceStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -373,7 +373,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'AddressState.initial()';
+    return 'ProvinceState.initial()';
   }
 
   @override
@@ -390,7 +390,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Address> address) loaded,
+    required TResult Function(List<Provinces> provinces) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -401,7 +401,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Address> address)? loaded,
+    TResult? Function(List<Provinces> provinces)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -412,7 +412,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Address> address)? loaded,
+    TResult Function(List<Provinces> provinces)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -460,7 +460,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements AddressState {
+abstract class _Initial implements ProvinceState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -473,7 +473,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$AddressStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$ProvinceStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -487,7 +487,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'AddressState.loading()';
+    return 'ProvinceState.loading()';
   }
 
   @override
@@ -504,7 +504,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Address> address) loaded,
+    required TResult Function(List<Provinces> provinces) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -515,7 +515,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Address> address)? loaded,
+    TResult? Function(List<Provinces> provinces)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -526,7 +526,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Address> address)? loaded,
+    TResult Function(List<Provinces> provinces)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -574,7 +574,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements AddressState {
+abstract class _Loading implements ProvinceState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -584,12 +584,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Address> address});
+  $Res call({List<Provinces> provinces});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$AddressStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$ProvinceStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -598,13 +598,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = null,
+    Object? provinces = null,
   }) {
     return _then(_$LoadedImpl(
-      null == address
-          ? _value._address
-          : address // ignore: cast_nullable_to_non_nullable
-              as List<Address>,
+      null == provinces
+          ? _value._provinces
+          : provinces // ignore: cast_nullable_to_non_nullable
+              as List<Provinces>,
     ));
   }
 }
@@ -612,19 +612,19 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final List<Address> address) : _address = address;
+  const _$LoadedImpl(final List<Provinces> provinces) : _provinces = provinces;
 
-  final List<Address> _address;
+  final List<Provinces> _provinces;
   @override
-  List<Address> get address {
-    if (_address is EqualUnmodifiableListView) return _address;
+  List<Provinces> get provinces {
+    if (_provinces is EqualUnmodifiableListView) return _provinces;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_address);
+    return EqualUnmodifiableListView(_provinces);
   }
 
   @override
   String toString() {
-    return 'AddressState.loaded(address: $address)';
+    return 'ProvinceState.loaded(provinces: $provinces)';
   }
 
   @override
@@ -632,12 +632,13 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._address, _address));
+            const DeepCollectionEquality()
+                .equals(other._provinces, _provinces));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_address));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_provinces));
 
   @JsonKey(ignore: true)
   @override
@@ -650,10 +651,10 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Address> address) loaded,
+    required TResult Function(List<Provinces> provinces) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(address);
+    return loaded(provinces);
   }
 
   @override
@@ -661,10 +662,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Address> address)? loaded,
+    TResult? Function(List<Provinces> provinces)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(address);
+    return loaded?.call(provinces);
   }
 
   @override
@@ -672,12 +673,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Address> address)? loaded,
+    TResult Function(List<Provinces> provinces)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(address);
+      return loaded(provinces);
     }
     return orElse();
   }
@@ -720,10 +721,10 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements AddressState {
-  const factory _Loaded(final List<Address> address) = _$LoadedImpl;
+abstract class _Loaded implements ProvinceState {
+  const factory _Loaded(final List<Provinces> provinces) = _$LoadedImpl;
 
-  List<Address> get address;
+  List<Provinces> get provinces;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -740,7 +741,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$AddressStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$ProvinceStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -770,7 +771,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'AddressState.error(message: $message)';
+    return 'ProvinceState.error(message: $message)';
   }
 
   @override
@@ -795,7 +796,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Address> address) loaded,
+    required TResult Function(List<Provinces> provinces) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -806,7 +807,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Address> address)? loaded,
+    TResult? Function(List<Provinces> provinces)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -817,7 +818,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Address> address)? loaded,
+    TResult Function(List<Provinces> provinces)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -865,7 +866,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements AddressState {
+abstract class _Error implements ProvinceState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;

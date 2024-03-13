@@ -4,8 +4,12 @@ import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/address_
 import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/auth_remote_datasource.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/category_remote_datasource.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/product_remote_datasource.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/rajaongkir_remote_datasource.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/add_address/add_address_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/address/address_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/city/city_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/province/province_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/subdistrict/subdistrict_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/alat_pertanian/alat_pertanian_bloc.dart';
@@ -65,6 +69,15 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AddAddressBloc(AddressRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => ProvinceBloc(RajaongkirRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => CityBloc(RajaongkirRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => SubdistrictBloc(RajaongkirRemoteDatasource()),
         ),
       ],
       child: MaterialApp.router(
