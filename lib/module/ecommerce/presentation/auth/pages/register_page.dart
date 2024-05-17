@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/auth_local_datasource.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/assets/assets.gen.dart';
@@ -6,6 +8,7 @@ import '../../../../../core/components/buttons.dart';
 import '../../../../../core/components/spaces.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/router/app_router.dart';
+import '../bloc/register/register_bloc.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -19,7 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
+  // final confirmPasswordController = TextEditingController();
 
   @override
   void initState() {
@@ -32,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
     phoneController.dispose();
     emailController.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
+    // confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -104,27 +107,60 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
-            const SpaceHeight(20.0),
-            TextFormField(
-              controller: confirmPasswordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Confirm Password',
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Assets.icons.password.svg(),
-                ),
-              ),
-            ),
+            // const SpaceHeight(20.0),
+            // TextFormField(
+            //   controller: confirmPasswordController,
+            //   obscureText: true,
+            //   decoration: InputDecoration(
+            //     labelText: 'Confirm Password',
+            //     prefixIcon: Padding(
+            //       padding: const EdgeInsets.all(12.0),
+            //       child: Assets.icons.password.svg(),
+            //     ),
+            //   ),
+            // ),
             const SpaceHeight(50.0),
-            Button.filled(
-              onPressed: () {
-                context.goNamed(
-                  RouteConstants.root,
-                  pathParameters: PathParameters().toMap(),
+            BlocConsumer<RegisterBloc, RegisterState>(
+              listener: (context, state) {
+                state.maybeWhen(
+                  orElse: () {},
+                  loading: () => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  loaded: (authResponseModel) {
+                    AuthLocalDatasource().saveAuthData(authResponseModel);
+                    context.goNamed(RouteConstants.root,
+                        pathParameters: PathParameters().toMap());
+                  },
+                  error: (message) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text(message),
+                      ),
+                    );
+                  },
                 );
               },
-              label: 'Register',
+              builder: (context, state) {
+                return state.maybeWhen(
+                  orElse: () {
+                    return Button.filled(
+                      onPressed: () {
+                        context.read<RegisterBloc>().add(RegisterEvent.register(
+                            name: nameController.text,
+                            email: emailController.text,
+                            phone: phoneController.text,
+                            password: passwordController.text));
+                      },
+                      label: 'Register',
+                    );
+                  },
+                  loading: () => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              },
             ),
 
             const SpaceHeight(50.0),

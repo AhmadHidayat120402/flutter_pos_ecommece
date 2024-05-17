@@ -20,7 +20,7 @@ class BenihBloc extends Bloc<BenihEvent, BenihState> {
       final response = await _productRemoteDatasource.getProductByCategory(2);
       response.fold(
         (l) => emit(_Error(l)),
-        (r) => emit(_Loaded(r.data!.data!)),
+        (r) => emit(_Loaded(r.data!)),
       );
     });
   }

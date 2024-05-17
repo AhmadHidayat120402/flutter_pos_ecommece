@@ -12,6 +12,8 @@ import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/subdistrict/subdistrict_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../bloc/address/address_bloc.dart';
+
 class AddAddressPage extends StatefulWidget {
   const AddAddressPage({super.key});
 
@@ -108,12 +110,14 @@ class _AddAddressPageState extends State<AddAddressPage> {
                     items: cities,
                     label: 'Kota/Kabupaten',
                     onChanged: (value) {
-                      setState(() {
-                        selectedCity = value!;
-                        context.read<SubdistrictBloc>().add(
-                            SubdistrictEvent.getSubdistrictsByCity(
-                                selectedCity.cityId!));
-                      });
+                      setState(
+                        () {
+                          selectedCity = value!;
+                          context.read<SubdistrictBloc>().add(
+                              SubdistrictEvent.getSubdistrictsByCity(
+                                  selectedCity.cityId!));
+                        },
+                      );
                     },
                   );
                 },
@@ -171,6 +175,9 @@ class _AddAddressPageState extends State<AddAddressPage> {
                       rootTab: RootTab.order,
                     ).toMap(),
                   );
+                  context
+                      .read<AddressBloc>()
+                      .add(const AddressEvent.getAddress());
                 },
               );
             },

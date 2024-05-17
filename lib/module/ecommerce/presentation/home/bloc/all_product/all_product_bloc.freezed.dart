@@ -20,18 +20,27 @@ mixin _$AllProductEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getAllProducts,
+    required TResult Function(int categoryId) getAllProductsByCategory,
+    required TResult Function(Product product, XFile? image) updateProduct,
+    required TResult Function(Product product, XFile image) addProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getAllProducts,
+    TResult? Function(int categoryId)? getAllProductsByCategory,
+    TResult? Function(Product product, XFile? image)? updateProduct,
+    TResult? Function(Product product, XFile image)? addProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getAllProducts,
+    TResult Function(int categoryId)? getAllProductsByCategory,
+    TResult Function(Product product, XFile? image)? updateProduct,
+    TResult Function(Product product, XFile image)? addProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +48,29 @@ mixin _$AllProductEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetAllProducts value) getAllProducts,
+    required TResult Function(_GetAllProductsByCategory value)
+        getAllProductsByCategory,
+    required TResult Function(_UpdateProduct value) updateProduct,
+    required TResult Function(_AddProduct value) addProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetAllProducts value)? getAllProducts,
+    TResult? Function(_GetAllProductsByCategory value)?
+        getAllProductsByCategory,
+    TResult? Function(_UpdateProduct value)? updateProduct,
+    TResult? Function(_AddProduct value)? addProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetAllProducts value)? getAllProducts,
+    TResult Function(_GetAllProductsByCategory value)? getAllProductsByCategory,
+    TResult Function(_UpdateProduct value)? updateProduct,
+    TResult Function(_AddProduct value)? addProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +134,9 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getAllProducts,
+    required TResult Function(int categoryId) getAllProductsByCategory,
+    required TResult Function(Product product, XFile? image) updateProduct,
+    required TResult Function(Product product, XFile image) addProduct,
   }) {
     return started();
   }
@@ -123,6 +146,9 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getAllProducts,
+    TResult? Function(int categoryId)? getAllProductsByCategory,
+    TResult? Function(Product product, XFile? image)? updateProduct,
+    TResult? Function(Product product, XFile image)? addProduct,
   }) {
     return started?.call();
   }
@@ -132,6 +158,9 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getAllProducts,
+    TResult Function(int categoryId)? getAllProductsByCategory,
+    TResult Function(Product product, XFile? image)? updateProduct,
+    TResult Function(Product product, XFile image)? addProduct,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +174,10 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetAllProducts value) getAllProducts,
+    required TResult Function(_GetAllProductsByCategory value)
+        getAllProductsByCategory,
+    required TResult Function(_UpdateProduct value) updateProduct,
+    required TResult Function(_AddProduct value) addProduct,
   }) {
     return started(this);
   }
@@ -154,6 +187,10 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetAllProducts value)? getAllProducts,
+    TResult? Function(_GetAllProductsByCategory value)?
+        getAllProductsByCategory,
+    TResult? Function(_UpdateProduct value)? updateProduct,
+    TResult? Function(_AddProduct value)? addProduct,
   }) {
     return started?.call(this);
   }
@@ -163,6 +200,9 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetAllProducts value)? getAllProducts,
+    TResult Function(_GetAllProductsByCategory value)? getAllProductsByCategory,
+    TResult Function(_UpdateProduct value)? updateProduct,
+    TResult Function(_AddProduct value)? addProduct,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -216,6 +256,9 @@ class _$GetAllProductsImpl implements _GetAllProducts {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getAllProducts,
+    required TResult Function(int categoryId) getAllProductsByCategory,
+    required TResult Function(Product product, XFile? image) updateProduct,
+    required TResult Function(Product product, XFile image) addProduct,
   }) {
     return getAllProducts();
   }
@@ -225,6 +268,9 @@ class _$GetAllProductsImpl implements _GetAllProducts {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getAllProducts,
+    TResult? Function(int categoryId)? getAllProductsByCategory,
+    TResult? Function(Product product, XFile? image)? updateProduct,
+    TResult? Function(Product product, XFile image)? addProduct,
   }) {
     return getAllProducts?.call();
   }
@@ -234,6 +280,9 @@ class _$GetAllProductsImpl implements _GetAllProducts {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getAllProducts,
+    TResult Function(int categoryId)? getAllProductsByCategory,
+    TResult Function(Product product, XFile? image)? updateProduct,
+    TResult Function(Product product, XFile image)? addProduct,
     required TResult orElse(),
   }) {
     if (getAllProducts != null) {
@@ -247,6 +296,10 @@ class _$GetAllProductsImpl implements _GetAllProducts {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetAllProducts value) getAllProducts,
+    required TResult Function(_GetAllProductsByCategory value)
+        getAllProductsByCategory,
+    required TResult Function(_UpdateProduct value) updateProduct,
+    required TResult Function(_AddProduct value) addProduct,
   }) {
     return getAllProducts(this);
   }
@@ -256,6 +309,10 @@ class _$GetAllProductsImpl implements _GetAllProducts {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetAllProducts value)? getAllProducts,
+    TResult? Function(_GetAllProductsByCategory value)?
+        getAllProductsByCategory,
+    TResult? Function(_UpdateProduct value)? updateProduct,
+    TResult? Function(_AddProduct value)? addProduct,
   }) {
     return getAllProducts?.call(this);
   }
@@ -265,6 +322,9 @@ class _$GetAllProductsImpl implements _GetAllProducts {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetAllProducts value)? getAllProducts,
+    TResult Function(_GetAllProductsByCategory value)? getAllProductsByCategory,
+    TResult Function(_UpdateProduct value)? updateProduct,
+    TResult Function(_AddProduct value)? addProduct,
     required TResult orElse(),
   }) {
     if (getAllProducts != null) {
@@ -276,6 +336,490 @@ class _$GetAllProductsImpl implements _GetAllProducts {
 
 abstract class _GetAllProducts implements AllProductEvent {
   const factory _GetAllProducts() = _$GetAllProductsImpl;
+}
+
+/// @nodoc
+abstract class _$$GetAllProductsByCategoryImplCopyWith<$Res> {
+  factory _$$GetAllProductsByCategoryImplCopyWith(
+          _$GetAllProductsByCategoryImpl value,
+          $Res Function(_$GetAllProductsByCategoryImpl) then) =
+      __$$GetAllProductsByCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int categoryId});
+}
+
+/// @nodoc
+class __$$GetAllProductsByCategoryImplCopyWithImpl<$Res>
+    extends _$AllProductEventCopyWithImpl<$Res, _$GetAllProductsByCategoryImpl>
+    implements _$$GetAllProductsByCategoryImplCopyWith<$Res> {
+  __$$GetAllProductsByCategoryImplCopyWithImpl(
+      _$GetAllProductsByCategoryImpl _value,
+      $Res Function(_$GetAllProductsByCategoryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categoryId = null,
+  }) {
+    return _then(_$GetAllProductsByCategoryImpl(
+      null == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetAllProductsByCategoryImpl implements _GetAllProductsByCategory {
+  const _$GetAllProductsByCategoryImpl(this.categoryId);
+
+  @override
+  final int categoryId;
+
+  @override
+  String toString() {
+    return 'AllProductEvent.getAllProductsByCategory(categoryId: $categoryId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAllProductsByCategoryImpl &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, categoryId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetAllProductsByCategoryImplCopyWith<_$GetAllProductsByCategoryImpl>
+      get copyWith => __$$GetAllProductsByCategoryImplCopyWithImpl<
+          _$GetAllProductsByCategoryImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getAllProducts,
+    required TResult Function(int categoryId) getAllProductsByCategory,
+    required TResult Function(Product product, XFile? image) updateProduct,
+    required TResult Function(Product product, XFile image) addProduct,
+  }) {
+    return getAllProductsByCategory(categoryId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getAllProducts,
+    TResult? Function(int categoryId)? getAllProductsByCategory,
+    TResult? Function(Product product, XFile? image)? updateProduct,
+    TResult? Function(Product product, XFile image)? addProduct,
+  }) {
+    return getAllProductsByCategory?.call(categoryId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllProducts,
+    TResult Function(int categoryId)? getAllProductsByCategory,
+    TResult Function(Product product, XFile? image)? updateProduct,
+    TResult Function(Product product, XFile image)? addProduct,
+    required TResult orElse(),
+  }) {
+    if (getAllProductsByCategory != null) {
+      return getAllProductsByCategory(categoryId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetAllProducts value) getAllProducts,
+    required TResult Function(_GetAllProductsByCategory value)
+        getAllProductsByCategory,
+    required TResult Function(_UpdateProduct value) updateProduct,
+    required TResult Function(_AddProduct value) addProduct,
+  }) {
+    return getAllProductsByCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetAllProducts value)? getAllProducts,
+    TResult? Function(_GetAllProductsByCategory value)?
+        getAllProductsByCategory,
+    TResult? Function(_UpdateProduct value)? updateProduct,
+    TResult? Function(_AddProduct value)? addProduct,
+  }) {
+    return getAllProductsByCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetAllProducts value)? getAllProducts,
+    TResult Function(_GetAllProductsByCategory value)? getAllProductsByCategory,
+    TResult Function(_UpdateProduct value)? updateProduct,
+    TResult Function(_AddProduct value)? addProduct,
+    required TResult orElse(),
+  }) {
+    if (getAllProductsByCategory != null) {
+      return getAllProductsByCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAllProductsByCategory implements AllProductEvent {
+  const factory _GetAllProductsByCategory(final int categoryId) =
+      _$GetAllProductsByCategoryImpl;
+
+  int get categoryId;
+  @JsonKey(ignore: true)
+  _$$GetAllProductsByCategoryImplCopyWith<_$GetAllProductsByCategoryImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateProductImplCopyWith<$Res> {
+  factory _$$UpdateProductImplCopyWith(
+          _$UpdateProductImpl value, $Res Function(_$UpdateProductImpl) then) =
+      __$$UpdateProductImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Product product, XFile? image});
+}
+
+/// @nodoc
+class __$$UpdateProductImplCopyWithImpl<$Res>
+    extends _$AllProductEventCopyWithImpl<$Res, _$UpdateProductImpl>
+    implements _$$UpdateProductImplCopyWith<$Res> {
+  __$$UpdateProductImplCopyWithImpl(
+      _$UpdateProductImpl _value, $Res Function(_$UpdateProductImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+    Object? image = freezed,
+  }) {
+    return _then(_$UpdateProductImpl(
+      null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+      freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateProductImpl implements _UpdateProduct {
+  const _$UpdateProductImpl(this.product, this.image);
+
+  @override
+  final Product product;
+  @override
+  final XFile? image;
+
+  @override
+  String toString() {
+    return 'AllProductEvent.updateProduct(product: $product, image: $image)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateProductImpl &&
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, product, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateProductImplCopyWith<_$UpdateProductImpl> get copyWith =>
+      __$$UpdateProductImplCopyWithImpl<_$UpdateProductImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getAllProducts,
+    required TResult Function(int categoryId) getAllProductsByCategory,
+    required TResult Function(Product product, XFile? image) updateProduct,
+    required TResult Function(Product product, XFile image) addProduct,
+  }) {
+    return updateProduct(product, image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getAllProducts,
+    TResult? Function(int categoryId)? getAllProductsByCategory,
+    TResult? Function(Product product, XFile? image)? updateProduct,
+    TResult? Function(Product product, XFile image)? addProduct,
+  }) {
+    return updateProduct?.call(product, image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllProducts,
+    TResult Function(int categoryId)? getAllProductsByCategory,
+    TResult Function(Product product, XFile? image)? updateProduct,
+    TResult Function(Product product, XFile image)? addProduct,
+    required TResult orElse(),
+  }) {
+    if (updateProduct != null) {
+      return updateProduct(product, image);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetAllProducts value) getAllProducts,
+    required TResult Function(_GetAllProductsByCategory value)
+        getAllProductsByCategory,
+    required TResult Function(_UpdateProduct value) updateProduct,
+    required TResult Function(_AddProduct value) addProduct,
+  }) {
+    return updateProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetAllProducts value)? getAllProducts,
+    TResult? Function(_GetAllProductsByCategory value)?
+        getAllProductsByCategory,
+    TResult? Function(_UpdateProduct value)? updateProduct,
+    TResult? Function(_AddProduct value)? addProduct,
+  }) {
+    return updateProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetAllProducts value)? getAllProducts,
+    TResult Function(_GetAllProductsByCategory value)? getAllProductsByCategory,
+    TResult Function(_UpdateProduct value)? updateProduct,
+    TResult Function(_AddProduct value)? addProduct,
+    required TResult orElse(),
+  }) {
+    if (updateProduct != null) {
+      return updateProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateProduct implements AllProductEvent {
+  const factory _UpdateProduct(final Product product, final XFile? image) =
+      _$UpdateProductImpl;
+
+  Product get product;
+  XFile? get image;
+  @JsonKey(ignore: true)
+  _$$UpdateProductImplCopyWith<_$UpdateProductImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddProductImplCopyWith<$Res> {
+  factory _$$AddProductImplCopyWith(
+          _$AddProductImpl value, $Res Function(_$AddProductImpl) then) =
+      __$$AddProductImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Product product, XFile image});
+}
+
+/// @nodoc
+class __$$AddProductImplCopyWithImpl<$Res>
+    extends _$AllProductEventCopyWithImpl<$Res, _$AddProductImpl>
+    implements _$$AddProductImplCopyWith<$Res> {
+  __$$AddProductImplCopyWithImpl(
+      _$AddProductImpl _value, $Res Function(_$AddProductImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+    Object? image = null,
+  }) {
+    return _then(_$AddProductImpl(
+      null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+      null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddProductImpl implements _AddProduct {
+  const _$AddProductImpl(this.product, this.image);
+
+  @override
+  final Product product;
+  @override
+  final XFile image;
+
+  @override
+  String toString() {
+    return 'AllProductEvent.addProduct(product: $product, image: $image)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddProductImpl &&
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, product, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddProductImplCopyWith<_$AddProductImpl> get copyWith =>
+      __$$AddProductImplCopyWithImpl<_$AddProductImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getAllProducts,
+    required TResult Function(int categoryId) getAllProductsByCategory,
+    required TResult Function(Product product, XFile? image) updateProduct,
+    required TResult Function(Product product, XFile image) addProduct,
+  }) {
+    return addProduct(product, image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getAllProducts,
+    TResult? Function(int categoryId)? getAllProductsByCategory,
+    TResult? Function(Product product, XFile? image)? updateProduct,
+    TResult? Function(Product product, XFile image)? addProduct,
+  }) {
+    return addProduct?.call(product, image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllProducts,
+    TResult Function(int categoryId)? getAllProductsByCategory,
+    TResult Function(Product product, XFile? image)? updateProduct,
+    TResult Function(Product product, XFile image)? addProduct,
+    required TResult orElse(),
+  }) {
+    if (addProduct != null) {
+      return addProduct(product, image);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetAllProducts value) getAllProducts,
+    required TResult Function(_GetAllProductsByCategory value)
+        getAllProductsByCategory,
+    required TResult Function(_UpdateProduct value) updateProduct,
+    required TResult Function(_AddProduct value) addProduct,
+  }) {
+    return addProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetAllProducts value)? getAllProducts,
+    TResult? Function(_GetAllProductsByCategory value)?
+        getAllProductsByCategory,
+    TResult? Function(_UpdateProduct value)? updateProduct,
+    TResult? Function(_AddProduct value)? addProduct,
+  }) {
+    return addProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetAllProducts value)? getAllProducts,
+    TResult Function(_GetAllProductsByCategory value)? getAllProductsByCategory,
+    TResult Function(_UpdateProduct value)? updateProduct,
+    TResult Function(_AddProduct value)? addProduct,
+    required TResult orElse(),
+  }) {
+    if (addProduct != null) {
+      return addProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddProduct implements AllProductEvent {
+  const factory _AddProduct(final Product product, final XFile image) =
+      _$AddProductImpl;
+
+  Product get product;
+  XFile get image;
+  @JsonKey(ignore: true)
+  _$$AddProductImplCopyWith<_$AddProductImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

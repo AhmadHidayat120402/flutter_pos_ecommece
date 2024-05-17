@@ -20,7 +20,7 @@ class PestisidaBloc extends Bloc<PestisidaEvent, PestisidaState> {
       final response = await _productRemoteDatasource.getProductByCategory(4);
       response.fold(
         (l) => emit(_Error(l)),
-        (r) => emit(_Loaded(r.data!.data!)),
+        (r) => emit(_Loaded(r.data!)),
       );
     });
   }

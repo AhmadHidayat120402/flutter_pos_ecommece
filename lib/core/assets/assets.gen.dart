@@ -14,17 +14,70 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/all_categories.svg
+  SvgGenImage get allCategories =>
+      const SvgGenImage('assets/icons/all_categories.svg');
+
+  /// File path: assets/icons/bag.svg
+  SvgGenImage get bag => const SvgGenImage('assets/icons/bag.svg');
+
+  /// File path: assets/icons/calendar.svg
+  SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
+
   /// File path: assets/icons/cart.svg
   SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
+
+  /// File path: assets/icons/cash.svg
+  SvgGenImage get cash => const SvgGenImage('assets/icons/cash.svg');
 
   /// File path: assets/icons/clock.svg
   SvgGenImage get clock => const SvgGenImage('assets/icons/clock.svg');
 
+  /// File path: assets/icons/copy.svg
+  SvgGenImage get copy => const SvgGenImage('assets/icons/copy.svg');
+
+  /// File path: assets/icons/creditcard.svg
+  SvgGenImage get creditcard =>
+      const SvgGenImage('assets/icons/creditcard.svg');
+
+  /// File path: assets/icons/dashboard.svg
+  SvgGenImage get dashboard => const SvgGenImage('assets/icons/dashboard.svg');
+
+  /// File path: assets/icons/debit.svg
+  SvgGenImage get debit => const SvgGenImage('assets/icons/debit.svg');
+
+  /// File path: assets/icons/delete.svg
+  SvgGenImage get delete => const SvgGenImage('assets/icons/delete.svg');
+
+  /// File path: assets/icons/done.svg
+  SvgGenImage get done => const SvgGenImage('assets/icons/done.svg');
+
+  /// File path: assets/icons/drink.svg
+  SvgGenImage get drink => const SvgGenImage('assets/icons/drink.svg');
+
+  /// File path: assets/icons/edit.svg
+  SvgGenImage get edit => const SvgGenImage('assets/icons/edit.svg');
+
   /// File path: assets/icons/email.svg
   SvgGenImage get email => const SvgGenImage('assets/icons/email.svg');
 
+  /// File path: assets/icons/food.svg
+  SvgGenImage get food => const SvgGenImage('assets/icons/food.svg');
+
+  /// File path: assets/icons/history.svg
+  SvgGenImage get history => const SvgGenImage('assets/icons/history.svg');
+
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
+
+  /// File path: assets/icons/home_pos.svg
+  SvgGenImage get homePos => const SvgGenImage('assets/icons/home_pos.svg');
+
+  /// File path: assets/icons/image.svg
+  SvgGenImage get image => const SvgGenImage('assets/icons/image.svg');
+
+  /// File path: assets/icons/location.svg
+  SvgGenImage get location => const SvgGenImage('assets/icons/location.svg');
 
   /// File path: assets/icons/notification.svg
   SvgGenImage get notification =>
@@ -33,11 +86,26 @@ class $AssetsIconsGen {
   /// File path: assets/icons/order.svg
   SvgGenImage get order => const SvgGenImage('assets/icons/order.svg');
 
+  /// File path: assets/icons/orders.svg
+  SvgGenImage get orders => const SvgGenImage('assets/icons/orders.svg');
+
   /// File path: assets/icons/password.svg
   SvgGenImage get password => const SvgGenImage('assets/icons/password.svg');
 
+  /// File path: assets/icons/payments.svg
+  SvgGenImage get payments => const SvgGenImage('assets/icons/payments.svg');
+
   /// File path: assets/icons/person.svg
   SvgGenImage get person => const SvgGenImage('assets/icons/person.svg');
+
+  /// File path: assets/icons/print.svg
+  SvgGenImage get print => const SvgGenImage('assets/icons/print.svg');
+
+  /// File path: assets/icons/qr_code.svg
+  SvgGenImage get qrCode => const SvgGenImage('assets/icons/qr_code.svg');
+
+  /// File path: assets/icons/report.svg
+  SvgGenImage get report => const SvgGenImage('assets/icons/report.svg');
 
   /// File path: assets/icons/search.svg
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
@@ -46,18 +114,48 @@ class $AssetsIconsGen {
   SvgGenImage get shieldDone =>
       const SvgGenImage('assets/icons/shield-done.svg');
 
+  /// File path: assets/icons/snack.svg
+  SvgGenImage get snack => const SvgGenImage('assets/icons/snack.svg');
+
+  /// File path: assets/icons/user.svg
+  SvgGenImage get user => const SvgGenImage('assets/icons/user.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
+        allCategories,
+        bag,
+        calendar,
         cart,
+        cash,
         clock,
+        copy,
+        creditcard,
+        dashboard,
+        debit,
+        delete,
+        done,
+        drink,
+        edit,
         email,
+        food,
+        history,
         home,
+        homePos,
+        image,
+        location,
         notification,
         order,
+        orders,
         password,
+        payments,
         person,
+        print,
+        qrCode,
+        report,
         search,
-        shieldDone
+        shieldDone,
+        snack,
+        user
       ];
 }
 
@@ -75,8 +173,40 @@ class $AssetsImagesGen {
   $AssetsImagesCategoriesGen get categories =>
       const $AssetsImagesCategoriesGen();
 
+  /// File path: assets/images/f1.jpeg
+  AssetGenImage get f1 => const AssetGenImage('assets/images/f1.jpeg');
+
+  /// File path: assets/images/f2.jpeg
+  AssetGenImage get f2 => const AssetGenImage('assets/images/f2.jpeg');
+
+  /// File path: assets/images/f3.jpeg
+  AssetGenImage get f3 => const AssetGenImage('assets/images/f3.jpeg');
+
+  /// File path: assets/images/f4.jpeg
+  AssetGenImage get f4 => const AssetGenImage('assets/images/f4.jpeg');
+
+  /// File path: assets/images/f5.jpeg
+  AssetGenImage get f5 => const AssetGenImage('assets/images/f5.jpeg');
+
+  /// File path: assets/images/f6.jpeg
+  AssetGenImage get f6 => const AssetGenImage('assets/images/f6.jpeg');
+
+  /// File path: assets/images/f7.jpeg
+  AssetGenImage get f7 => const AssetGenImage('assets/images/f7.jpeg');
+
+  /// File path: assets/images/f8.jpeg
+  AssetGenImage get f8 => const AssetGenImage('assets/images/f8.jpeg');
+
   /// File path: assets/images/google.png
   AssetGenImage get google => const AssetGenImage('assets/images/google.png');
+
+  /// File path: assets/images/manage_printer.png
+  AssetGenImage get managePrinter =>
+      const AssetGenImage('assets/images/manage_printer.png');
+
+  /// File path: assets/images/manage_product.png
+  AssetGenImage get manageProduct =>
+      const AssetGenImage('assets/images/manage_product.png');
 
   /// File path: assets/images/oops.png
   AssetGenImage get oops => const AssetGenImage('assets/images/oops.png');
@@ -88,8 +218,23 @@ class $AssetsImagesGen {
   $AssetsImagesProductsGen get products => const $AssetsImagesProductsGen();
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [banner1, banner2, google, oops, processOrder];
+  List<AssetGenImage> get values => [
+        banner1,
+        banner2,
+        f1,
+        f2,
+        f3,
+        f4,
+        f5,
+        f6,
+        f7,
+        f8,
+        google,
+        managePrinter,
+        manageProduct,
+        oops,
+        processOrder
+      ];
 }
 
 class $AssetsImagesBanksGen {

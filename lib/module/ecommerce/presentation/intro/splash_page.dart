@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pos_ecommerce/core/router/app_router.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../core/constants/colors.dart';
+import '../../../pos/presentation/home/pages/dashboard_page.dart';
+import '../../data/datasources/auth_local_datasource.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -13,19 +14,39 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   @override
+  void initState() {
+    super.initState();
+    _initializePage();
+  }
+
+  Future<void> _initializePage() async {
+    await Future.delayed(const Duration(seconds: 3));
+    final authData = await AuthLocalDatasource().getAuthData();
+    final role = authData?.user?.roles;
+    // print('Role: $role');
+    if (role == 'owner' || role == 'kasir') {
+      context.goNamed(RouteConstants.dashboardPos);
+    } else if (role == 'member') {
+      context.goNamed(RouteConstants.root,
+          pathParameters: PathParameters().toMap());
+    } else if (role == null || role.isEmpty) {
+      context.goNamed(
+        RouteConstants.login,
+      );
+    } else {
+      context.goNamed(
+        RouteConstants.login,
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    Future.delayed(
-      const Duration(seconds: 3),
-      () => context.goNamed(
-        RouteConstants.root,
-        pathParameters: PathParameters().toMap(),
-      ),
-    );
     return const Scaffold(
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(30.0),
         child: Text(
-          'Code with Bahri',
+          'Nusa Dua Agro',
           style: TextStyle(
             color: AppColors.grey,
             fontWeight: FontWeight.w600,

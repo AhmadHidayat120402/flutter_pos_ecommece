@@ -1,10 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/pages/logout_page.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/account/pages/account_page.dart';
 
 import '../../../../../core/assets/assets.gen.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../orders/pages/cart_page.dart';
+import '../../orders/pages/history_order_page.dart';
 import 'home_page.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -22,24 +23,12 @@ class _DashboardPageState extends State<DashboardPage> {
   late int _selectedIndex;
   final List<Widget> _pages = [
     const HomePage(),
-    // const Center(
-    //   child: Text("this page 1"),
-    // ),
-    // const SearchPage(),
     const CartPage(),
     // const Center(
-    //   child: Text('This Page 1'),
+    //   child: Text('This Page 3'),
     // ),
-    // const Center(
-    //   child: Text('This Page 2'),
-    // ),
-    const Center(
-      child: Text('This Page 3'),
-    ),
-    // const Center(
-    //   child: Text('This Page 4 '),
-    // ),
-    const LogoutPage(),
+    const HistoryOrderPage(),
+    const AccountPage()
   ];
 
   void _onItemTapped(int index) {
@@ -84,14 +73,14 @@ class _DashboardPageState extends State<DashboardPage> {
             label: 'ORDER',
           ),
           BottomNavigationBarItem(
-            icon: Assets.icons.search.svg(
+            icon: Assets.icons.bag.svg(
               colorFilter: const ColorFilter.mode(
                 AppColors.grey,
                 BlendMode.srcIn,
               ),
             ),
-            activeIcon: Assets.icons.search.svg(),
-            label: 'EXPLORE',
+            activeIcon: Assets.icons.bag.svg(),
+            label: 'HISTORI',
           ),
           BottomNavigationBarItem(
             icon: Assets.icons.person.svg(
@@ -101,7 +90,7 @@ class _DashboardPageState extends State<DashboardPage> {
               ),
             ),
             activeIcon: Assets.icons.person.svg(),
-            label: 'ACCOUNT',
+            label: 'AKUN',
           ),
         ],
       ),

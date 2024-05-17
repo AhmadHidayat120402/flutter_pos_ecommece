@@ -1,8 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_pos_ecommerce/firebase_options.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/address_remote_datasource.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/auth_remote_datasource.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/category_remote_datasource.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/discount_remote_datasource.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/order_remote_datasource.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/product_local_datasource.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/product_remote_datasource.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/rajaongkir_remote_datasource.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/add_address/add_address_bloc.dart';
@@ -12,19 +17,39 @@ import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/subdistrict/subdistrict_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/auth/bloc/logout/logout_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/auth/bloc/register/register_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/alat_pertanian/alat_pertanian_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/all_product/all_product_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/benih/benih_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/category/category_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/checkout/checkout_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/detail_product/detail_product_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/pestisida/pestisida_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/pupuk/pupuk_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/orders/bloc/cost/cost_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/orders/bloc/history_order/history_order_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/orders/bloc/order/order_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/orders/bloc/order_detail/order_detail_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/orders/bloc/status_order/status_order_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/orders/bloc/tracking/tracking_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/pos/presentation/history/bloc/bloc/history_pos_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/pos/presentation/home/bloc/checkout_pos/checkout_pos_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/pos/presentation/home/bloc/local_product/local_product_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/pos/presentation/order/bloc/order_pos/order_pos_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/pos/presentation/report/bloc/transaction_report/transaction_report_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/pos/presentation/setting/bloc/bloc/add_discount_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/pos/presentation/setting/bloc/discount/discount_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/pos/presentation/setting/bloc/sync_order/sync_order_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'core/constants/colors.dart';
 import 'core/router/app_router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -41,7 +66,8 @@ class MyApp extends StatelessWidget {
           create: (context) => CategoryBloc(CategoryRemoteDatasource()),
         ),
         BlocProvider(
-          create: (context) => AllProductBloc(ProductRemoteDatasource()),
+          create: (context) => AllProductBloc(ProductRemoteDatasource())
+            ..add(const AllProductEvent.getAllProducts()),
         ),
         BlocProvider(
           create: (context) => BenihBloc(ProductRemoteDatasource()),
@@ -62,6 +88,9 @@ class MyApp extends StatelessWidget {
           create: (context) => LoginBloc(AuthRemoteDatasource()),
         ),
         BlocProvider(
+          create: (context) => RegisterBloc(AuthRemoteDatasource()),
+        ),
+        BlocProvider(
           create: (context) => LogoutBloc(AuthRemoteDatasource()),
         ),
         BlocProvider(
@@ -79,9 +108,58 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SubdistrictBloc(RajaongkirRemoteDatasource()),
         ),
+        BlocProvider(
+          create: (context) => CostBloc(RajaongkirRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => OrderBloc(OrderRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => StatusOrderBloc(OrderRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => HistoryOrderBloc(OrderRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => OrderDetailBloc(OrderRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => TrackingBloc(RajaongkirRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => DetailProductBloc(ProductRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              LocalProductBloc(ProductLocalDatasource.instance),
+        ),
+        BlocProvider(
+          create: (context) => CheckoutPosBloc(),
+        ),
+        BlocProvider(
+          create: (context) => OrderPosBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SyncOrderBloc(
+            OrderRemoteDatasource(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => HistoryPosBloc(),
+        ),
+        BlocProvider(
+          create: (context) => DiscountBloc(DiscountRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => AddDiscountBloc(DiscountRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              TransactionReportBloc(ProductLocalDatasource.instance),
+        ),
       ],
       child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: true,
         title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),

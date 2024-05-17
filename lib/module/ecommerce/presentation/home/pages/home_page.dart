@@ -6,6 +6,11 @@ import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/be
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/pestisida/pestisida_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/pupuk/pupuk_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/pages/alat_pertanian_page.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/pages/benih_page.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/pages/chat_page_ecommerce.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/pages/pestisida_page.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/pages/pupuk_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:badges/badges.dart' as badges;
 import '../../../../../core/assets/assets.gen.dart';
@@ -18,6 +23,7 @@ import '../widgets/banner_slider.dart';
 import '../widgets/organism/menu_categories.dart';
 import '../widgets/organism/product_list.dart';
 import '../widgets/title_content.dart';
+import 'all_product_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -252,18 +258,12 @@ class _HomePageState extends State<HomePage> {
           BlocBuilder<CheckoutBloc, CheckoutState>(
             builder: (context, state) {
               return state.maybeWhen(
-                orElse: () => const SizedBox.shrink(),
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                error: (message) => Center(
-                  child: Text(message),
-                ),
-                loaded: (products) {
-                  final totalQuantity = products.fold(
-                      0,
-                      (previousValue, element) =>
-                          previousValue + element.quantity);
+                loaded: (checkout, _, __, ___, ____, ______,_____) {
+                  final totalQuantity = checkout.fold<int>(
+                    0,
+                    (previousValue, element) =>
+                        previousValue + element.quantity,
+                  );
                   return totalQuantity > 0
                       ? badges.Badge(
                           badgeContent: Text(
@@ -290,6 +290,7 @@ class _HomePageState extends State<HomePage> {
                           icon: Assets.icons.cart.svg(height: 24.0),
                         );
                 },
+                orElse: () => const SizedBox.shrink(),
               );
             },
           ),
@@ -316,7 +317,7 @@ class _HomePageState extends State<HomePage> {
           BannerSlider(items: banners1),
           const SpaceHeight(12.0),
           TitleContent(
-            title: 'Categories',
+            title: 'kategori',
             onSeeAllTap: () {},
           ),
           const SpaceHeight(12.0),
@@ -334,8 +335,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 loaded: (products) {
                   return ProductList(
-                    title: "All Product",
-                    onSeeAllTap: () {},
+                    title: "Semua Produk",
+                    onSeeAllTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AllProductPage()));
+                    },
                     items:
                         products.length > 2 ? products.sublist(0, 2) : products,
                   );
@@ -359,7 +365,12 @@ class _HomePageState extends State<HomePage> {
                 loaded: (products) {
                   return ProductList(
                     title: 'Benih',
-                    onSeeAllTap: () {},
+                    onSeeAllTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BenihPage()));
+                    },
                     items:
                         products.length > 2 ? products.sublist(0, 2) : products,
                   );
@@ -381,7 +392,12 @@ class _HomePageState extends State<HomePage> {
                 loaded: (products) {
                   return ProductList(
                     title: 'Pupuk',
-                    onSeeAllTap: () {},
+                    onSeeAllTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PupukPage()));
+                    },
                     items:
                         products.length > 2 ? products.sublist(0, 2) : products,
                   );
@@ -403,7 +419,12 @@ class _HomePageState extends State<HomePage> {
                 loaded: (products) {
                   return ProductList(
                     title: 'Pestisida',
-                    onSeeAllTap: () {},
+                    onSeeAllTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PestisidaPage()));
+                    },
                     items: products,
                   );
                 },
@@ -424,7 +445,12 @@ class _HomePageState extends State<HomePage> {
                 loaded: (products) {
                   return ProductList(
                     title: 'Alat Pertanian',
-                    onSeeAllTap: () {},
+                    onSeeAllTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AlatPertanianPage()));
+                    },
                     items: products,
                   );
                 },
@@ -433,6 +459,17 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => const ChatPageEcommerce(),
+      //       ),
+      //     );
+      //   },
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pos_ecommerce/core/core.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/models/product_quantity.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/orders/models/cart_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../../../../core/components/spaces.dart';
 import '../../../../../core/constants/colors.dart';

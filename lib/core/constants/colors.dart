@@ -24,4 +24,14 @@ class AppColors {
 
   /// bgLogin = #EDEDED
   static const Color bgLogin = Color(0xffEDEDED);
+
+  static const Color disabled = Color(0xffC8D1E1);
+
+  static const Color card = Color(0xffE5E5E5);
+
+  static const Color blueLight = Color(0xffC7D0EB);
+
+  static const Color green = Color(0xff50C474);
+
+  static const Color subtitle = Color(0xff7890CD);
 }

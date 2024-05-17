@@ -10,6 +10,8 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool showLabel;
   final Widget? suffixIcon;
+  final bool readOnly;
+final Widget? prefixIcon;
 
   const CustomTextField({
     super.key,
@@ -20,6 +22,8 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType,
     this.showLabel = true,
     this.suffixIcon,
+    this.prefixIcon,
+    this.readOnly = false,
   });
 
   @override
@@ -42,7 +46,9 @@ class CustomTextField extends StatelessWidget {
           onChanged: onChanged,
           obscureText: obscureText,
           keyboardType: keyboardType,
+          readOnly: readOnly,
           decoration: InputDecoration(
+            prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(5.0)),

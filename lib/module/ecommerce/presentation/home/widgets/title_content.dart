@@ -27,7 +27,7 @@ class TitleContent extends StatelessWidget {
         InkWell(
           onTap: onSeeAllTap,
           child: const Text(
-            'See All',
+            'Lihat Semua',
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,

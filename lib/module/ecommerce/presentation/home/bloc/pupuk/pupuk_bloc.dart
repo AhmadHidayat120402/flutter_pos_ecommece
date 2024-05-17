@@ -20,7 +20,7 @@ class PupukBloc extends Bloc<PupukEvent, PupukState> {
       final response = await _productRemoteDatasource.getProductByCategory(3);
       response.fold(
         (l) => emit(_Error(l)),
-        (r) => emit(_Loaded(r.data!.data!)),
+        (r) => emit(_Loaded(r.data!)),
       );
     });
   }

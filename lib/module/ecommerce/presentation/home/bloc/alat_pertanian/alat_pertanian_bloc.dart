@@ -20,7 +20,7 @@ class AlatPertanianBloc extends Bloc<AlatPertanianEvent, AlatPertanianState> {
       final response = await _productRemoteDatasource.getProductByCategory(5);
       response.fold(
         (l) => emit(_Error(l)),
-        (r) => emit(_Loaded(r.data!.data!)),
+        (r) => emit(_Loaded(r.data!)),
       );
     });
   }

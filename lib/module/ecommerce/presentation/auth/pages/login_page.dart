@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/data/datasources/auth_local_datasource.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/auth/bloc/login/login_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/pos/presentation/home/pages/dashboard_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/assets/assets.gen.dart';
@@ -84,8 +85,24 @@ class _LoginPageState extends State<LoginPage> {
                   orElse: () {},
                   loaded: (authResponseModel) {
                     AuthLocalDatasource().saveAuthData(authResponseModel);
-                    context.goNamed(RouteConstants.root,
-                        pathParameters: PathParameters().toMap());
+                    if (authResponseModel.user!.roles == 'owner' ||
+                        authResponseModel.user!.roles == 'kasir') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DashboardPosPage(),
+                        ),
+                      );
+                    } else {
+                      context.goNamed(RouteConstants.root,
+                          pathParameters: PathParameters().toMap());
+                    }
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        backgroundColor: AppColors.primary,
+                        content: Text("Login Berhasil"),
+                      ),
+                    );
                   },
                   error: (message) {
                     ScaffoldMessenger.of(context).showSnackBar(

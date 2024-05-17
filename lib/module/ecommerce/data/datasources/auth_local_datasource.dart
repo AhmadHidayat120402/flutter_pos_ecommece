@@ -2,6 +2,19 @@ import 'package:flutter_pos_ecommerce/module/ecommerce/data/models/responses/aut
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthLocalDatasource {
+  static String role = "ROLE";
+
+  static Future<String> getRole() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? role = prefs.getString(AuthLocalDatasource.role);
+    return role ?? '';
+  }
+
+  static saveRole(String role) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString(AuthLocalDatasource.role, role);
+  }
+
   Future<void> saveAuthData(AuthResponseModel authResponseModel) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('auth_data', authResponseModel.toJson());

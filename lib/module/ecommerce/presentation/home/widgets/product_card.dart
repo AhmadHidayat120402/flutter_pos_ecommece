@@ -21,7 +21,7 @@ class ProductCard extends StatelessWidget {
         context.goNamed(
           RouteConstants.productDetail,
           pathParameters: PathParameters().toMap(),
-          extra: data,
+          extra: data.id,
         );
       },
       child: Stack(

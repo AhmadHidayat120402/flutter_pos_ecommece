@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pos_ecommerce/core/core.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/add_address/add_address_bloc.dart';
 import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/address/bloc/address/address_bloc.dart';
+import 'package:flutter_pos_ecommerce/module/ecommerce/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/assets/assets.gen.dart';
 import '../../../../../core/components/buttons.dart';
 import '../../../../../core/components/spaces.dart';
 import '../../../../../core/router/app_router.dart';
-import '../models/address_model.dart';
 import '../widgets/address_tile.dart';
 
 class AddressPage extends StatefulWidget {
@@ -86,29 +87,40 @@ class _AddressPageState extends State<AddressPage> {
                   child: CircularProgressIndicator(),
                 ),
                 loaded: (address) {
-                  return ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: address.length,
-                    itemBuilder: (context, index) => AddressTile(
-                      isSelected: false,
-                      data: address[index],
-                      onTap: () {
-                        //  selectedIndex = index;
-                        //  setState(() {});
-                      },
-                      onEditTap: () {
-                        context.goNamed(
-                          RouteConstants.editAddress,
-                          pathParameters: PathParameters(
-                            rootTab: RootTab.order,
-                          ).toMap(),
-                          extra: address[index],
-                        );
-                      },
-                    ),
-                    separatorBuilder: (context, index) =>
-                        const SpaceHeight(16.0),
+                  return BlocBuilder<CheckoutBloc, CheckoutState>(
+                    builder: (context, state) {
+                      // dapatkan addressid
+                      final addressId = state.maybeWhen(
+                        orElse: () => 0,
+                        loaded: (_, discount,addressId, __, ____, _____, ______) {
+                          return addressId;
+                        },
+                      );
+                      return ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: address.length,
+                        itemBuilder: (context, index) => AddressTile(
+                          isSelected: addressId == address[index].id,
+                          data: address[index],
+                          onTap: () {
+                            context.read<CheckoutBloc>().add(
+                                CheckoutEvent.addAddressId(address[index].id!));
+                          },
+                          onEditTap: () {
+                            context.goNamed(
+                              RouteConstants.editAddress,
+                              pathParameters: PathParameters(
+                                rootTab: RootTab.order,
+                              ).toMap(),
+                              extra: address[index],
+                            );
+                          },
+                        ),
+                        separatorBuilder: (context, index) =>
+                            const SpaceHeight(16.0),
+                      );
+                    },
                   );
                 },
               );
@@ -116,13 +128,14 @@ class _AddressPageState extends State<AddressPage> {
           ),
           const SpaceHeight(40.0),
           Button.outlined(
-            onPressed: () {
-              context.goNamed(
+            onPressed: () async {
+              await context.pushNamed(
                 RouteConstants.addAddress,
                 pathParameters: PathParameters(
                   rootTab: RootTab.order,
                 ).toMap(),
               );
+              context.read<AddressBloc>().add(const AddressEvent.getAddress());
             },
             label: 'Add address',
           ),
@@ -143,11 +156,25 @@ class _AddressPageState extends State<AddressPage> {
                     fontSize: 16.0,
                   ),
                 ),
-                Text(
-                  20000.currencyFormatRp,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                  ),
+                BlocBuilder<CheckoutBloc, CheckoutState>(
+                  builder: (context, state) {
+                    final subtotal = state.maybeWhen(
+                      orElse: () => 0,
+                      loaded: (products, discount,_, __, ___, ____, _____) {
+                        return products.fold(
+                            0,
+                            (previousValue, element) =>
+                                previousValue +
+                                (element.quantity * element.product.price!));
+                      },
+                    );
+                    return Text(
+                      subtotal.currencyFormatRp,
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

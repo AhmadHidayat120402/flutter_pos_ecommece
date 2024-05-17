@@ -22,6 +22,25 @@ class AuthRemoteDatasource {
     }
   }
 
+  Future<Either<String, AuthResponseModel>> register(
+      String name, String email, String phone, String password) async {
+    final response = await http
+        .post(Uri.parse('${GlobalVariable.baseUrl}/api/register'), body: {
+      'name': name,
+      'email': email,
+      'phone': phone,
+      'password': password
+    });
+
+    if (response.statusCode == 201) {
+      return Right(AuthResponseModel.fromJson(response.body));
+    } else {
+      String res = response.body;
+      Map<String, dynamic> resData = jsonDecode(res);
+      return Left(resData['message']);
+    }
+  }
+
   Future<Either<String, String>> logout() async {
     final authData = await AuthLocalDatasource().getAuthData();
     final response = await http.post(

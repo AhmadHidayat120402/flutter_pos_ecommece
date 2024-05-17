@@ -61,18 +61,12 @@ class CartPage extends StatelessWidget {
           BlocBuilder<CheckoutBloc, CheckoutState>(
             builder: (context, state) {
               return state.maybeWhen(
-                orElse: () => const SizedBox.shrink(),
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                error: (message) => Center(
-                  child: Text(message),
-                ),
-                loaded: (products) {
-                  final totalQuantity = products.fold(
-                      0,
-                      (previousValue, element) =>
-                          previousValue + element.quantity);
+                loaded: (checkout, discount, _, __, ___, ____, ______) {
+                  final totalQuantity = checkout.fold<int>(
+                    0,
+                    (previousValue, element) =>
+                        previousValue + element.quantity,
+                  );
                   return totalQuantity > 0
                       ? badges.Badge(
                           badgeContent: Text(
@@ -99,6 +93,7 @@ class CartPage extends StatelessWidget {
                           icon: Assets.icons.cart.svg(height: 24.0),
                         );
                 },
+                orElse: () => const SizedBox.shrink(),
               );
             },
           ),
@@ -113,20 +108,19 @@ class CartPage extends StatelessWidget {
           BlocBuilder<CheckoutBloc, CheckoutState>(
             builder: (context, state) {
               return state.maybeWhen(
-                orElse: () => const SizedBox.shrink(),
-                loaded: (products) {
-                  return ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: products.length,
-                    itemBuilder: (context, index) => CartTile(
-                      data: products[index],
-                    ),
-                    separatorBuilder: (context, index) =>
-                        const SpaceHeight(16.0),
-                  );
-                },
-              );
+                  orElse: () => const SizedBox.shrink(),
+                  loaded: (checkout, discount, _, __, ___, ____, _____) {
+                    return ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: checkout.length,
+                      itemBuilder: (context, index) => CartTile(
+                        data: checkout[index],
+                      ),
+                      separatorBuilder: (context, index) =>
+                          const SpaceHeight(16.0),
+                    );
+                  });
             },
           ),
           const SpaceHeight(50.0),
@@ -144,12 +138,13 @@ class CartPage extends StatelessWidget {
                 builder: (context, state) {
                   final total = state.maybeWhen(
                     orElse: () => 0,
-                    loaded: (products) {
-                      return products.fold(
-                          0,
-                          (previousValue, element) =>
-                              previousValue +
-                              (element.quantity * element.product.price!));
+                    loaded: (checkout, discount, _, __, ___, ____, _____) {
+                      return checkout.fold<int>(
+                        0,
+                        (previousValue, element) =>
+                            previousValue +
+                            (element.quantity * element.product.price!),
+                      );
                     },
                   );
                   return Text(
@@ -168,11 +163,12 @@ class CartPage extends StatelessWidget {
             builder: (context, state) {
               final totalQty = state.maybeWhen(
                 orElse: () => 0,
-                loaded: (products) {
-                  return products.fold(
-                      0,
-                      (previousValue, element) =>
-                          previousValue + element.quantity);
+                loaded: (checkout, _, __, ___, ____, _____, ______) {
+                  return checkout.fold<int>(
+                    0,
+                    (previousValue, element) =>
+                        previousValue + element.quantity,
+                  );
                 },
               );
               return Button.filled(
@@ -183,14 +179,27 @@ class CartPage extends StatelessWidget {
                       RouteConstants.login,
                     );
                   } else {
-                    context.goNamed(RouteConstants.address,
-                        pathParameters: PathParameters(
-                          rootTab: RootTab.order,
-                        ).toMap());
+                    context.goNamed(
+                      RouteConstants.address,
+                      pathParameters: PathParameters(
+                        rootTab: RootTab.order,
+                      ).toMap(),
+                    );
                   }
                 },
                 label: 'Checkout ($totalQty)',
               );
+              // return Button.filled(
+              //   onPressed: () {
+              //     context.goNamed(
+              //       RouteConstants.address,
+              //       pathParameters: PathParameters(
+              //         rootTab: RootTab.order,
+              //       ).toMap(),
+              //     );
+              //   },
+              //   label: 'Checkout (10)',
+              // );
             },
           ),
         ],
